@@ -1,0 +1,659 @@
+<!doctype html>
+<html lang="ru" data-bs-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#4f46e5">
+  <meta name="description" content="Современный сайт-визитка под WAP Touch на HTML5 и Bootstrap 5 — быстрая мобильная версия, контакты в 1 касание и vCard.">
+  <title>Алексей Морозов — WAP Touch Визитка</title>
+
+  <!-- Локальный Bootstrap 5.3 и Bootstrap Icons (быстрая загрузка как в WAP) -->
+  <link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <div class="wap-viewport">
+    <div id="wapShell" class="wap-shell">
+
+      <!-- Верхняя статусная панель WAP Touch -->
+      <header class="wap-topbar d-flex align-items-center justify-content-between gap-2">
+        <div class="d-flex align-items-center gap-2 min-w-0">
+          <span class="wap-brand-dot" aria-hidden="true"></span>
+          <div class="min-w-0">
+            <div class="fw-bold small lh-sm text-truncate">wap.morozov.dev</div>
+            <div class="text-wap-muted d-flex align-items-center gap-2" style="font-size: 0.7rem;">
+              <span><i class="bi bi-reception-4 me-1"></i>Touch</span>
+              <span>•</span>
+              <span id="wapClock">--:--</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex align-items-center gap-2">
+          <span class="wap-status-pill d-none d-sm-inline-flex align-items-center gap-1">
+            На связи
+          </span>
+          <button
+            id="widthToggleBtn"
+            type="button"
+            class="wap-icon-btn d-none d-md-inline-flex"
+            title="Переключить ширину: WAP Touch / Широкий"
+            aria-label="Переключить ширину просмотра">
+            <i id="widthIcon" class="bi bi-arrows-angle-expand"></i>
+          </button>
+          <button
+            id="themeToggleBtn"
+            type="button"
+            class="wap-icon-btn"
+            title="Сменить тему"
+            aria-label="Сменить тему оформления">
+            <i id="themeIcon" class="bi bi-moon-stars-fill"></i>
+          </button>
+          <button
+            id="shareBtn"
+            type="button"
+            class="wap-icon-btn"
+            title="Поделиться визиткой"
+            aria-label="Поделиться визиткой">
+            <i class="bi bi-share-fill"></i>
+          </button>
+        </div>
+      </header>
+
+      <!-- Основной контент вкладок -->
+      <main class="wap-main">
+        <div class="tab-content" id="wapTabContent">
+
+          <!-- ==================== ВКЛАДКА 1: ВИЗИТКА ==================== -->
+          <section class="tab-pane fade show active" id="tab-home" role="tabpanel" aria-labelledby="dock-home">
+
+            <!-- Главная карточка профиля -->
+            <div class="wap-hero-card mb-3">
+              <div class="wap-hero-banner d-flex align-items-start justify-content-between p-3">
+                <span class="wap-wap-tag">
+                  <i class="bi bi-lightning-charge-fill me-1"></i>WAP Touch 2.0
+                </span>
+                <span class="wap-wap-tag">
+                  <i class="bi bi-geo-alt-fill me-1"></i>Москва
+                </span>
+              </div>
+
+              <div class="px-3 pb-3">
+                <div class="d-flex align-items-end justify-content-between gap-2 mb-2">
+                  <div class="wap-avatar-wrap">
+                    <div class="wap-avatar" aria-hidden="true">
+                      <!-- Лёгкий векторный аватар без внешних картинок -->
+                      <svg viewBox="0 0 80 80" width="80" height="80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                          <linearGradient id="avatarGrad" x1="0" y1="0" x2="80" y2="80" gradientUnits="userSpaceOnUse">
+                            <stop offset="0%" stop-color="#4F46E5"/>
+                            <stop offset="100%" stop-color="#06B6D4"/>
+                          </linearGradient>
+                        </defs>
+                        <rect width="80" height="80" rx="20" fill="url(#avatarGrad)"/>
+                        <circle cx="40" cy="31" r="13" fill="rgba(255,255,255,0.92)"/>
+                        <path d="M18 67C18 55.954 27.85 48 40 48C52.15 48 62 55.954 62 67" fill="rgba(255,255,255,0.92)"/>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <span class="badge rounded-pill text-bg-success bg-opacity-10 text-success border border-success border-opacity-25 px-3 py-2">
+                    <i class="bi bi-check-circle-fill me-1"></i>Открыт к проектам
+                  </span>
+                </div>
+
+                <h1 class="h4 fw-bold mb-1">Алексей Морозов</h1>
+                <p class="text-wap-muted small mb-2">
+                  Frontend &amp; Mobile Touch разработчик · Создаю сверхбыстрые сайты, веб-приложения и мобильные порталы.
+                </p>
+
+                <div class="d-flex flex-wrap gap-2 mb-3">
+                  <span class="wap-chip"><i class="bi bi-clock"></i>Ответ ~15 мин</span>
+                  <span class="wap-chip"><i class="bi bi-bootstrap-fill"></i>Bootstrap 5</span>
+                </div>
+
+                <div class="row g-2">
+                  <div class="col-7">
+                    <button type="button" class="btn wap-btn-primary w-100 d-flex align-items-center justify-content-center gap-2" data-wap-tab="#tab-contact">
+                      <i class="bi bi-chat-dots-fill"></i>
+                      <span>Написать</span>
+                    </button>
+                  </div>
+                  <div class="col-5">
+                    <button id="downloadVcardBtn" type="button" class="btn wap-btn-soft w-100 d-flex align-items-center justify-content-center gap-1">
+                      <i class="bi bi-person-plus-fill"></i>
+                      <span>vCard</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Быстрые сенсорные плитки связи -->
+            <div class="row g-2 mb-3">
+              <div class="col-3">
+                <a href="tel:+79991234567" class="wap-quick-tile">
+                  <span class="wap-quick-icon bg-success bg-opacity-10 text-success">
+                    <i class="bi bi-telephone-fill"></i>
+                  </span>
+                  <span class="wap-quick-label">Звонок</span>
+                </a>
+              </div>
+              <div class="col-3">
+                <a href="https://t.me/morozov_dev" target="_blank" rel="noopener noreferrer" class="wap-quick-tile">
+                  <span class="wap-quick-icon bg-info bg-opacity-10 text-info">
+                    <i class="bi bi-telegram"></i>
+                  </span>
+                  <span class="wap-quick-label">Telegram</span>
+                </a>
+              </div>
+              <div class="col-3">
+                <a href="mailto:hello@morozov.dev" class="wap-quick-tile">
+                  <span class="wap-quick-icon bg-primary bg-opacity-10 text-primary">
+                    <i class="bi bi-envelope-fill"></i>
+                  </span>
+                  <span class="wap-quick-label">Почта</span>
+                </a>
+              </div>
+              <div class="col-3">
+                <button type="button" class="wap-quick-tile w-100" data-copy="+7 (999) 123-45-67" data-copy-label="Телефон скопирован">
+                  <span class="wap-quick-icon bg-warning bg-opacity-10 text-warning">
+                    <i class="bi bi-copy"></i>
+                  </span>
+                  <span class="wap-quick-label">Номер</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Короткие метрики -->
+            <div class="row g-2 mb-3">
+              <div class="col-4">
+                <div class="wap-stat-box">
+                  <div class="wap-stat-value">7+ лет</div>
+                  <div class="wap-stat-label">в разработке</div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="wap-stat-box">
+                  <div class="wap-stat-value">60+</div>
+                  <div class="wap-stat-label">проектов</div>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="wap-stat-box">
+                  <div class="wap-stat-value">0.3 сек</div>
+                  <div class="wap-stat-label">скорость WAP</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Сенсорное меню навигации (в духе современного WAP-портала) -->
+            <div class="d-flex align-items-center justify-content-between mb-2 px-1">
+              <h2 class="h6 fw-bold mb-0">Разделы визитки</h2>
+              <span class="small text-wap-muted">4 пункта</span>
+            </div>
+
+            <div class="wap-menu-card mb-3">
+              <button type="button" class="wap-menu-item" data-wap-tab="#tab-services">
+                <span class="wap-menu-badge bg-primary bg-opacity-10 text-primary">
+                  <i class="bi bi-layers-fill"></i>
+                </span>
+                <span class="flex-grow-1">
+                  <span class="d-block wap-menu-title">Услуги и тарифы</span>
+                  <span class="d-block wap-menu-sub">Лендинги, WAP Touch порталы, UI-редизайн</span>
+                </span>
+                <i class="bi bi-chevron-right text-wap-muted"></i>
+              </button>
+
+              <button type="button" class="wap-menu-item" data-wap-tab="#tab-projects">
+                <span class="wap-menu-badge bg-info bg-opacity-10 text-info">
+                  <i class="bi bi-grid-1x2-fill"></i>
+                </span>
+                <span class="flex-grow-1">
+                  <span class="d-block wap-menu-title">Избранные проекты</span>
+                  <span class="d-block wap-menu-sub">Кейсы с метриками и быстрой загрузкой</span>
+                </span>
+                <i class="bi bi-chevron-right text-wap-muted"></i>
+              </button>
+
+              <button type="button" class="wap-menu-item" data-wap-tab="#tab-contact">
+                <span class="wap-menu-badge bg-success bg-opacity-10 text-success">
+                  <i class="bi bi-send-fill"></i>
+                </span>
+                <span class="flex-grow-1">
+                  <span class="d-block wap-menu-title">Быстрая заявка</span>
+                  <span class="d-block wap-menu-sub">Обсудить задачу или заказать звонок</span>
+                </span>
+                <i class="bi bi-chevron-right text-wap-muted"></i>
+              </button>
+
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="wap-menu-item">
+                <span class="wap-menu-badge bg-secondary bg-opacity-10 text-body">
+                  <i class="bi bi-github"></i>
+                </span>
+                <span class="flex-grow-1">
+                  <span class="d-block wap-menu-title">GitHub профиль</span>
+                  <span class="d-block wap-menu-sub">Открытый код и шаблоны интерфейсов</span>
+                </span>
+                <i class="bi bi-box-arrow-up-right text-wap-muted small"></i>
+              </a>
+            </div>
+
+            <!-- Обо мне и стек -->
+            <div class="wap-card mb-2">
+              <h2 class="h6 fw-bold mb-2">Ключевой стек</h2>
+              <p class="small text-wap-muted mb-3">
+                Проектирую мобильные и адаптивные интерфейсы, которые идеально ощущаются под большим пальцем: минимум лишнего веса, высокая контрастность и чёткая структура.
+              </p>
+              <div class="d-flex flex-wrap gap-2">
+                <span class="wap-chip">HTML5 / Semantic</span>
+                <span class="wap-chip">Bootstrap 5.3</span>
+                <span class="wap-chip">Mobile First</span>
+                <span class="wap-chip">Touch UX</span>
+                <span class="wap-chip">JavaScript ES6+</span>
+                <span class="wap-chip">PWA / vCard</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- ==================== ВКЛАДКА 2: УСЛУГИ ==================== -->
+          <section class="tab-pane fade" id="tab-services" role="tabpanel" aria-labelledby="dock-services">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div>
+                <h2 class="h5 fw-bold mb-0">Услуги и формат</h2>
+                <p class="small text-wap-muted mb-0">Прозрачные сроки и фиксированный результат</p>
+              </div>
+              <span class="wap-chip">2026</span>
+            </div>
+
+            <div class="d-grid gap-3 mb-4">
+              <article class="wap-service-card">
+                <div class="d-flex align-items-start justify-content-between gap-2 mb-2">
+                  <div>
+                    <h3 class="h6 fw-bold mb-1">WAP Touch Визитка</h3>
+                    <span class="small text-wap-muted"><i class="bi bi-clock me-1"></i>Срок: 2–3 дня</span>
+                  </div>
+                  <span class="wap-price-tag">от 15 000 ₽</span>
+                </div>
+                <p class="small text-wap-muted mb-3">
+                  Стильный одностраничный мобильный сайт-визитка на Bootstrap 5 с тёмной темой, кнопкой vCard и формой заявки.
+                </p>
+                <div class="d-flex flex-wrap gap-2 mb-3">
+                  <span class="badge rounded-pill bg-body-secondary text-body border">Мобильный UX</span>
+                  <span class="badge rounded-pill bg-body-secondary text-body border">vCard .vcf</span>
+                  <span class="badge rounded-pill bg-body-secondary text-body border">PageSpeed 98+</span>
+                </div>
+                <button type="button" class="btn wap-btn-soft w-100" data-select-service="WAP Touch Визитка">
+                  Выбрать эту услугу
+                </button>
+              </article>
+
+              <article class="wap-service-card">
+                <div class="d-flex align-items-start justify-content-between gap-2 mb-2">
+                  <div>
+                    <h3 class="h6 fw-bold mb-1">Мобильный мини-портал</h3>
+                    <span class="small text-wap-muted"><i class="bi bi-clock me-1"></i>Срок: 5–7 дней</span>
+                  </div>
+                  <span class="wap-price-tag">от 35 000 ₽</span>
+                </div>
+                <p class="small text-wap-muted mb-3">
+                  Многовкладочный touch-сайт для сервиса, магазина или личного бренда с каталогом услуг, модальными окнами и аналитикой.
+                </p>
+                <div class="d-flex flex-wrap gap-2 mb-3">
+                  <span class="badge rounded-pill bg-body-secondary text-body border">Каталог</span>
+                  <span class="badge rounded-pill bg-body-secondary text-body border">Telegram уведомления</span>
+                  <span class="badge rounded-pill bg-body-secondary text-body border">Адаптив 100%</span>
+                </div>
+                <button type="button" class="btn wap-btn-soft w-100" data-select-service="Мобильный мини-портал">
+                  Выбрать эту услугу
+                </button>
+              </article>
+
+              <article class="wap-service-card">
+                <div class="d-flex align-items-start justify-content-between gap-2 mb-2">
+                  <div>
+                    <h3 class="h6 fw-bold mb-1">UI-оптимизация под смартфоны</h3>
+                    <span class="small text-wap-muted"><i class="bi bi-clock me-1"></i>Срок: 3–4 дня</span>
+                  </div>
+                  <span class="wap-price-tag">от 20 000 ₽</span>
+                </div>
+                <p class="small text-wap-muted mb-3">
+                  Адаптация существующего сайта под сенсорные экраны: переработка меню под палец, ускорение загрузки и современная верстка.
+                </p>
+                <button type="button" class="btn wap-btn-soft w-100" data-select-service="UI-оптимизация под смартфоны">
+                  Выбрать эту услугу
+                </button>
+              </article>
+            </div>
+
+            <!-- Частые вопросы -->
+            <h3 class="h6 fw-bold mb-2 px-1">Частые вопросы</h3>
+            <div class="accordion wap-accordion" id="wapFaq">
+              <div class="accordion-item">
+                <h4 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqOne">
+                    Почему именно формат WAP Touch?
+                  </button>
+                </h4>
+                <div id="faqOne" class="accordion-collapse collapse" data-bs-parent="#wapFaq">
+                  <div class="accordion-body small text-wap-muted">
+                    Более 75% переходов из мессенджеров и соцсетей происходят со смартфонов. Формат WAP Touch даёт мгновенную загрузку даже при слабой сети и удобную навигацию одной рукой.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h4 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqTwo">
+                    Хорошо ли сайт выглядит на ПК?
+                  </button>
+                </h4>
+                <div id="faqTwo" class="accordion-collapse collapse" data-bs-parent="#wapFaq">
+                  <div class="accordion-body small text-wap-muted">
+                    Да — на широком экране визитка аккуратно центрируется как стильное мобильное приложение, а при желании можно переключить широкий режим прямо в шапке.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h4 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqThree">
+                    Что нужно для старта работы?
+                  </button>
+                </h4>
+                <div id="faqThree" class="accordion-collapse collapse" data-bs-parent="#wapFaq">
+                  <div class="accordion-body small text-wap-muted">
+                    Достаточно короткого описания задачи, ваших контактов и пожеланий по цветам. Если текстов ещё нет — помогу со структурой.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ==================== ВКЛАДКА 3: ПРОЕКТЫ ==================== -->
+          <section class="tab-pane fade" id="tab-projects" role="tabpanel" aria-labelledby="dock-projects">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+              <div>
+                <h2 class="h5 fw-bold mb-0">Избранные кейсы</h2>
+                <p class="small text-wap-muted mb-0">Нажмите на карточку, чтобы открыть детали</p>
+              </div>
+              <span class="wap-chip">3 кейса</span>
+            </div>
+
+            <div class="d-grid gap-3">
+              <article class="wap-project-card">
+                <div class="wap-project-cover wap-cover-1">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="badge bg-dark bg-opacity-25 rounded-pill">FinTech · 2026</span>
+                    <i class="bi bi-wallet2 fs-5"></i>
+                  </div>
+                  <div>
+                    <h3 class="h5 fw-bold mb-0">PayLite Touch</h3>
+                    <small class="opacity-75">Мобильный платёжный интерфейс</small>
+                  </div>
+                </div>
+                <div class="p-3 d-flex align-items-center justify-content-between gap-2">
+                  <span class="small text-wap-muted">Загрузка 0.4 сек · 42 КБ</span>
+                  <button
+                    type="button"
+                    class="btn btn-sm wap-btn-soft px-3"
+                    style="min-height: 38px;"
+                    data-bs-toggle="modal"
+                    data-bs-target="#projectModal"
+                    data-project-key="fintech">
+                    Подробнее
+                  </button>
+                </div>
+              </article>
+
+              <article class="wap-project-card">
+                <div class="wap-project-cover wap-cover-2">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="badge bg-dark bg-opacity-25 rounded-pill">Travel · 2025</span>
+                    <i class="bi bi-compass fs-5"></i>
+                  </div>
+                  <div>
+                    <h3 class="h5 fw-bold mb-0">GoTrip Express</h3>
+                    <small class="opacity-75">Touch-портал бронирования билетов</small>
+                  </div>
+                </div>
+                <div class="p-3 d-flex align-items-center justify-content-between gap-2">
+                  <span class="small text-wap-muted">Конверсия +34% на мобайле</span>
+                  <button
+                    type="button"
+                    class="btn btn-sm wap-btn-soft px-3"
+                    style="min-height: 38px;"
+                    data-bs-toggle="modal"
+                    data-bs-target="#projectModal"
+                    data-project-key="travel">
+                    Подробнее
+                  </button>
+                </div>
+              </article>
+
+              <article class="wap-project-card">
+                <div class="wap-project-cover wap-cover-3">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <span class="badge bg-dark bg-opacity-25 rounded-pill">Branding · 2025</span>
+                    <i class="bi bi-stars fs-5"></i>
+                  </div>
+                  <div>
+                    <h3 class="h5 fw-bold mb-0">Studio K — Mini Card</h3>
+                    <small class="opacity-75">Цифровая визитка + vCard 3.0</small>
+                  </div>
+                </div>
+                <div class="p-3 d-flex align-items-center justify-content-between gap-2">
+                  <span class="small text-wap-muted">PageSpeed Mobile 99/100</span>
+                  <button
+                    type="button"
+                    class="btn btn-sm wap-btn-soft px-3"
+                    style="min-height: 38px;"
+                    data-bs-toggle="modal"
+                    data-bs-target="#projectModal"
+                    data-project-key="brand">
+                    Подробнее
+                  </button>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <!-- ==================== ВКЛАДКА 4: СВЯЗЬ ==================== -->
+          <section class="tab-pane fade" id="tab-contact" role="tabpanel" aria-labelledby="dock-contact">
+            <div class="mb-3">
+              <h2 class="h5 fw-bold mb-0">Связаться со мной</h2>
+              <p class="small text-wap-muted mb-0">Отвечаю ежедневно с 10:00 до 21:00 (МСК)</p>
+            </div>
+
+            <!-- Прямые контакты -->
+            <div class="wap-menu-card mb-3">
+              <button type="button" class="wap-menu-item" data-copy="+7 (999) 123-45-67" data-copy-label="Телефон скопирован">
+                <span class="wap-menu-badge bg-success bg-opacity-10 text-success">
+                  <i class="bi bi-telephone-fill"></i>
+                </span>
+                <span class="flex-grow-1">
+                  <span class="d-block wap-menu-title">+7 (999) 123-45-67</span>
+                  <span class="d-block wap-menu-sub">Нажмите, чтобы скопировать номер</span>
+                </span>
+                <i class="bi bi-copy text-wap-muted"></i>
+              </button>
+
+              <a href="https://t.me/morozov_dev" target="_blank" rel="noopener noreferrer" class="wap-menu-item">
+                <span class="wap-menu-badge bg-info bg-opacity-10 text-info">
+                  <i class="bi bi-telegram"></i>
+                </span>
+                <span class="flex-grow-1">
+                  <span class="d-block wap-menu-title">@morozov_dev</span>
+                  <span class="d-block wap-menu-sub">Самый быстрый способ связи в Telegram</span>
+                </span>
+                <i class="bi bi-box-arrow-up-right text-wap-muted small"></i>
+              </a>
+
+              <button type="button" class="wap-menu-item" data-copy="hello@morozov.dev" data-copy-label="Email скопирован">
+                <span class="wap-menu-badge bg-primary bg-opacity-10 text-primary">
+                  <i class="bi bi-envelope-at-fill"></i>
+                </span>
+                <span class="flex-grow-1">
+                  <span class="d-block wap-menu-title">hello@morozov.dev</span>
+                  <span class="d-block wap-menu-sub">Для брифов и коммерческих предложений</span>
+                </span>
+                <i class="bi bi-copy text-wap-muted"></i>
+              </button>
+            </div>
+
+            <!-- Сообщение об успешной отправке -->
+            <div id="formSuccessAlert" class="alert alert-success border-0 rounded-4 d-none mb-3" role="alert">
+              <div class="d-flex align-items-center gap-2">
+                <i class="bi bi-check-circle-fill fs-5"></i>
+                <div class="small">
+                  Спасибо, <strong data-sender-name>Друг</strong>! Заявка успешно принята.
+                </div>
+              </div>
+            </div>
+
+            <!-- Форма обратной связи -->
+            <div class="wap-card">
+              <h3 class="h6 fw-bold mb-3">Оставить заявку</h3>
+              <form id="wapContactForm" class="needs-validation" novalidate>
+                <div class="mb-3">
+                  <label for="contactName" class="form-label small fw-semibold">Ваше имя</label>
+                  <input type="text" class="form-control wap-input" id="contactName" placeholder="Например, Дмитрий" required>
+                  <div class="invalid-feedback">Укажите, как к вам обращаться.</div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="contactReach" class="form-label small fw-semibold">Telegram или телефон</label>
+                  <input type="text" class="form-control wap-input" id="contactReach" placeholder="@username или +7..." required>
+                  <div class="invalid-feedback">Оставьте контакт для ответа.</div>
+                </div>
+
+                <div class="mb-3">
+                  <label for="contactService" class="form-label small fw-semibold">Интересующая услуга</label>
+                  <select class="form-select wap-input" id="contactService">
+                    <option value="WAP Touch Визитка">WAP Touch Визитка</option>
+                    <option value="Мобильный мини-портал">Мобильный мини-портал</option>
+                    <option value="UI-оптимизация под смартфоны">UI-оптимизация под смартфоны</option>
+                    <option value="Другая задача">Другая задача</option>
+                  </select>
+                </div>
+
+                <div class="mb-3">
+                  <label for="contactMessage" class="form-label small fw-semibold">Коротко о задаче</label>
+                  <textarea class="form-control wap-input" id="contactMessage" rows="3" placeholder="Расскажите пару слов о проекте..." required></textarea>
+                  <div class="invalid-feedback">Напишите краткое сообщение.</div>
+                </div>
+
+                <button type="submit" class="btn wap-btn-primary w-100 d-flex align-items-center justify-content-center gap-2">
+                  <i class="bi bi-send-fill"></i>
+                  <span>Отправить заявку</span>
+                </button>
+              </form>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- Компактный футер -->
+        <footer class="wap-footer text-center mt-3">
+          <div>© 2026 Алексей Морозов · WAP Touch Edition</div>
+          <div>HTML5 + Bootstrap 5 · Оптимизировано для смартфонов</div>
+        </footer>
+      </main>
+
+      <!-- Нижняя панель навигации (Thumb-friendly Bottom Dock) -->
+      <nav class="wap-bottom-dock" aria-label="Нижняя навигация">
+        <div class="nav nav-pills wap-nav-pills" id="wapTabNav" role="tablist">
+          <button
+            class="nav-link wap-dock-btn active"
+            id="dock-home"
+            data-bs-toggle="pill"
+            data-bs-target="#tab-home"
+            type="button"
+            role="tab"
+            aria-controls="tab-home"
+            aria-selected="true">
+            <i class="bi bi-person-vcard-fill"></i>
+            <span>Визитка</span>
+          </button>
+
+          <button
+            class="nav-link wap-dock-btn"
+            id="dock-services"
+            data-bs-toggle="pill"
+            data-bs-target="#tab-services"
+            type="button"
+            role="tab"
+            aria-controls="tab-services"
+            aria-selected="false">
+            <i class="bi bi-layers-fill"></i>
+            <span>Услуги</span>
+          </button>
+
+          <button
+            class="nav-link wap-dock-btn"
+            id="dock-projects"
+            data-bs-toggle="pill"
+            data-bs-target="#tab-projects"
+            type="button"
+            role="tab"
+            aria-controls="tab-projects"
+            aria-selected="false">
+            <i class="bi bi-grid-1x2-fill"></i>
+            <span>Проекты</span>
+          </button>
+
+          <button
+            class="nav-link wap-dock-btn"
+            id="dock-contact"
+            data-bs-toggle="pill"
+            data-bs-target="#tab-contact"
+            type="button"
+            role="tab"
+            aria-controls="tab-contact"
+            aria-selected="false">
+            <i class="bi bi-chat-square-text-fill"></i>
+            <span>Связь</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Модальное окно просмотра проекта -->
+  <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content rounded-4 border-0 shadow-lg">
+        <div class="modal-header border-0 pb-1">
+          <div>
+            <h5 class="modal-title fw-bold" id="projectModalTitle">Проект</h5>
+            <div class="small text-wap-muted" id="projectModalMeta"></div>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+        </div>
+        <div class="modal-body pt-2">
+          <div class="p-2 px-3 rounded-3 mb-3 small fw-semibold" style="background: var(--wap-success-soft); color: #10b981;" id="projectModalMetrics"></div>
+          <p class="small text-wap-muted mb-3" id="projectModalDesc"></p>
+          <div class="d-flex flex-wrap gap-2" id="projectModalStack"></div>
+        </div>
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn wap-btn-primary w-100" data-bs-dismiss="modal" data-wap-tab="#tab-contact">
+            Хочу похожий проект
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Всплывающее уведомление (Toast) -->
+  <div class="toast-container position-fixed top-0 start-50 translate-middle-x p-3" style="z-index: 1080;">
+    <div id="wapToast" class="toast align-items-center text-bg-dark border-0 rounded-4 shadow" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body small fw-semibold" id="wapToastBody">Готово</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Закрыть"></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
