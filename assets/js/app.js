@@ -6,15 +6,14 @@
   'use strict';
 
   const PROFILE = {
-    fullName: 'Алексей Морозов',
-    lastName: 'Морозов',
-    firstName: 'Алексей',
+    fullName: 'Виталий',
+    lastName: '',
+    firstName: 'Виталий',
     role: 'Web & Mobile Touch Разработчик',
-    org: 'Morozov Digital',
-    phone: '+7 (999) 123-45-67',
-    phoneRaw: '+79991234567',
-    email: 'hello@morozov.dev',
-    telegram: '@morozov_dev',
+    org: 'Виталий',
+    email: 'brehachev2026@gmail.com',
+    maxUrl: 'https://max.ru/',
+    vkUrl: 'https://vk.com/',
     city: 'Москва / Remote',
     website: window.location.href
   };
@@ -193,10 +192,9 @@
         `FN:${PROFILE.fullName}`,
         `ORG:${PROFILE.org}`,
         `TITLE:${PROFILE.role}`,
-        `TEL;TYPE=CELL,VOICE:${PROFILE.phoneRaw}`,
         `EMAIL;TYPE=INTERNET:${PROFILE.email}`,
         `URL:${PROFILE.website}`,
-        `NOTE:Telegram ${PROFILE.telegram} | ${PROFILE.city}`,
+        `NOTE:MAX ${PROFILE.maxUrl} | VK ${PROFILE.vkUrl} | ${PROFILE.city}`,
         'END:VCARD'
       ].join('\r\n');
 
@@ -204,7 +202,7 @@
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'alexey-morozov.vcf';
+      a.download = 'vitaliy.vcf';
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
