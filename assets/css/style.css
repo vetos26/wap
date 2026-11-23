@@ -1,0 +1,607 @@
+/* ==========================================================================
+   WAP Touch — Современный сайт-визитка на Bootstrap 5
+   Лёгкий, сенсорно-ориентированный интерфейс (Touch-First Mobile UI)
+   ========================================================================== */
+
+:root {
+  --wap-accent: #4f46e5;
+  --wap-accent-2: #06b6d4;
+  --wap-accent-soft: rgba(79, 70, 229, 0.12);
+  --wap-success-soft: rgba(16, 185, 129, 0.14);
+  --wap-bg-outer: #eef2ff;
+  --wap-bg-shell: #f8fafc;
+  --wap-surface: rgba(255, 255, 255, 0.88);
+  --wap-surface-solid: #ffffff;
+  --wap-border: rgba(15, 23, 42, 0.08);
+  --wap-shadow: 0 20px 50px -15px rgba(15, 23, 42, 0.14);
+  --wap-card-shadow: 0 4px 16px -4px rgba(15, 23, 42, 0.06);
+  --wap-text-muted: #64748b;
+  --wap-radius-lg: 22px;
+  --wap-radius-md: 16px;
+  --wap-radius-sm: 12px;
+  --wap-shell-width: 440px;
+}
+
+[data-bs-theme="dark"] {
+  --wap-accent: #818cf8;
+  --wap-accent-2: #22d3ee;
+  --wap-accent-soft: rgba(129, 140, 248, 0.16);
+  --wap-success-soft: rgba(52, 211, 153, 0.16);
+  --wap-bg-outer: #050814;
+  --wap-bg-shell: #0b1120;
+  --wap-surface: rgba(15, 23, 42, 0.82);
+  --wap-surface-solid: #111827;
+  --wap-border: rgba(148, 163, 184, 0.14);
+  --wap-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.65);
+  --wap-card-shadow: 0 6px 20px -6px rgba(0, 0, 0, 0.4);
+  --wap-text-muted: #94a3b8;
+}
+
+/* Базовая типографика и фоновое окружение */
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: var(--wap-bg-outer);
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(79, 70, 229, 0.16), transparent 42%),
+    radial-gradient(circle at 88% 82%, rgba(6, 182, 212, 0.16), transparent 44%);
+  background-attachment: fixed;
+  min-height: 100dvh;
+  margin: 0;
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Внешний контейнер для центрирования WAP Touch оболочки на десктопе */
+.wap-viewport {
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0;
+}
+
+@media (min-width: 576px) {
+  .wap-viewport {
+    padding: 20px 16px 28px;
+  }
+}
+
+/* Оболочка WAP Touch */
+.wap-shell {
+  width: 100%;
+  max-width: var(--wap-shell-width);
+  min-height: 100dvh;
+  background: var(--wap-bg-shell);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: max-width 0.3s cubic-bezier(0.22, 1, 0.36, 1), border-radius 0.3s ease;
+}
+
+@media (min-width: 576px) {
+  .wap-shell {
+    min-height: calc(100dvh - 48px);
+    border-radius: 30px;
+    border: 1px solid var(--wap-border);
+    box-shadow: var(--wap-shadow);
+    overflow: clip;
+  }
+
+  .wap-shell.wap-shell-wide {
+    max-width: 820px;
+  }
+}
+
+/* Верхняя панель WAP Touch */
+.wap-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  background: var(--wap-surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--wap-border);
+  padding: 10px 16px;
+}
+
+.wap-brand-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 0 4px var(--wap-success-soft);
+  display: inline-block;
+  flex-shrink: 0;
+  animation: wapPulse 2.4s infinite;
+}
+
+@keyframes wapPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 3px var(--wap-success-soft);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(16, 185, 129, 0.05);
+  }
+}
+
+.wap-status-pill {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--wap-success-soft);
+  color: #10b981;
+}
+
+[data-bs-theme="dark"] .wap-status-pill {
+  color: #34d399;
+}
+
+/* Кнопки-иконки в шапке (крупный touch target) */
+.wap-icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--wap-border);
+  background: var(--wap-surface-solid);
+  color: inherit;
+  transition: transform 0.14s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.wap-icon-btn:hover {
+  border-color: var(--wap-accent);
+  color: var(--wap-accent);
+}
+
+.wap-icon-btn:active {
+  transform: scale(0.93);
+}
+
+/* Основная рабочая область */
+.wap-main {
+  flex: 1 1 auto;
+  padding: 16px;
+}
+
+/* Hero-карточка визитки */
+.wap-hero-card {
+  position: relative;
+  border-radius: var(--wap-radius-lg);
+  background: var(--wap-surface-solid);
+  border: 1px solid var(--wap-border);
+  box-shadow: var(--wap-card-shadow);
+  overflow: hidden;
+}
+
+.wap-hero-banner {
+  height: 92px;
+  background: linear-gradient(135deg, var(--wap-accent) 0%, #6366f1 45%, var(--wap-accent-2) 100%);
+  position: relative;
+}
+
+.wap-hero-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 80% 25%, rgba(255, 255, 255, 0.26), transparent 40%),
+    radial-gradient(circle at 18% 85%, rgba(255, 255, 255, 0.16), transparent 45%);
+}
+
+.wap-wap-tag {
+  position: relative;
+  z-index: 1;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: rgba(15, 23, 42, 0.28);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.wap-avatar-wrap {
+  margin-top: -44px;
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  padding: 4px;
+  border-radius: 24px;
+  background: var(--wap-surface-solid);
+  box-shadow: 0 10px 24px -8px rgba(15, 23, 42, 0.28);
+}
+
+.wap-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #4f46e5, #06b6d4);
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Touch-кнопки */
+.wap-btn-primary {
+  background: linear-gradient(135deg, var(--wap-accent), #6366f1);
+  border: none;
+  color: #fff;
+  min-height: 48px;
+  border-radius: 14px;
+  font-weight: 600;
+  box-shadow: 0 10px 20px -8px rgba(79, 70, 229, 0.55);
+  transition: transform 0.14s ease, filter 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wap-btn-primary:hover,
+.wap-btn-primary:focus {
+  color: #fff;
+  filter: brightness(1.06);
+}
+
+.wap-btn-primary:active {
+  transform: scale(0.97);
+}
+
+.wap-btn-soft {
+  background: var(--wap-accent-soft);
+  color: var(--wap-accent);
+  border: 1px solid transparent;
+  min-height: 48px;
+  border-radius: 14px;
+  font-weight: 600;
+  transition: transform 0.14s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.wap-btn-soft:hover {
+  border-color: var(--wap-accent);
+  color: var(--wap-accent);
+}
+
+.wap-btn-soft:active {
+  transform: scale(0.97);
+}
+
+/* Быстрая сетка контактов (Touch Grid) */
+.wap-quick-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 76px;
+  padding: 10px 6px;
+  border-radius: var(--wap-radius-md);
+  background: var(--wap-surface-solid);
+  border: 1px solid var(--wap-border);
+  box-shadow: var(--wap-card-shadow);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.14s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wap-quick-tile:hover {
+  border-color: var(--wap-accent);
+  transform: translateY(-1px);
+}
+
+.wap-quick-tile:active {
+  transform: scale(0.95);
+}
+
+.wap-quick-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.wap-quick-label {
+  font-size: 0.74rem;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+/* Touch-меню в стиле современного WAP-портала */
+.wap-menu-card {
+  border-radius: var(--wap-radius-lg);
+  background: var(--wap-surface-solid);
+  border: 1px solid var(--wap-border);
+  box-shadow: var(--wap-card-shadow);
+  overflow: hidden;
+}
+
+.wap-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 60px;
+  padding: 12px 14px;
+  text-decoration: none;
+  color: inherit;
+  background: transparent;
+  border: none;
+  width: 100%;
+  text-align: left;
+  border-bottom: 1px solid var(--wap-border);
+  transition: background-color 0.16s ease, transform 0.12s ease;
+}
+
+.wap-menu-item:last-child {
+  border-bottom: none;
+}
+
+.wap-menu-item:hover {
+  background: var(--wap-accent-soft);
+}
+
+.wap-menu-item:active {
+  transform: scale(0.99);
+}
+
+.wap-menu-badge {
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.wap-menu-title {
+  font-weight: 600;
+  font-size: 0.94rem;
+  line-height: 1.25;
+}
+
+.wap-menu-sub {
+  font-size: 0.78rem;
+  color: var(--wap-text-muted);
+  line-height: 1.25;
+}
+
+/* Метрики и карточки */
+.wap-stat-box {
+  background: var(--wap-surface-solid);
+  border: 1px solid var(--wap-border);
+  border-radius: var(--wap-radius-md);
+  padding: 12px 10px;
+  text-align: center;
+  box-shadow: var(--wap-card-shadow);
+}
+
+.wap-stat-value {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, var(--wap-accent), var(--wap-accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.wap-stat-label {
+  font-size: 0.72rem;
+  color: var(--wap-text-muted);
+  font-weight: 500;
+}
+
+.wap-card {
+  background: var(--wap-surface-solid);
+  border: 1px solid var(--wap-border);
+  border-radius: var(--wap-radius-lg);
+  box-shadow: var(--wap-card-shadow);
+  padding: 16px;
+}
+
+.wap-service-card {
+  background: var(--wap-surface-solid);
+  border: 1px solid var(--wap-border);
+  border-radius: var(--wap-radius-lg);
+  box-shadow: var(--wap-card-shadow);
+  padding: 16px;
+  transition: border-color 0.2s ease, transform 0.14s ease;
+}
+
+.wap-service-card:hover {
+  border-color: var(--wap-accent);
+}
+
+.wap-price-tag {
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: var(--wap-accent-soft);
+  color: var(--wap-accent);
+  white-space: nowrap;
+}
+
+/* Портфолио / проекты */
+.wap-project-card {
+  background: var(--wap-surface-solid);
+  border: 1px solid var(--wap-border);
+  border-radius: var(--wap-radius-lg);
+  box-shadow: var(--wap-card-shadow);
+  overflow: hidden;
+  transition: transform 0.15s ease, border-color 0.2s ease;
+}
+
+.wap-project-card:hover {
+  border-color: var(--wap-accent);
+}
+
+.wap-project-card:active {
+  transform: scale(0.985);
+}
+
+.wap-project-cover {
+  height: 112px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.wap-cover-1 {
+  background: linear-gradient(135deg, #4338ca, #06b6d4);
+}
+
+.wap-cover-2 {
+  background: linear-gradient(135deg, #0f766e, #10b981);
+}
+
+.wap-cover-3 {
+  background: linear-gradient(135deg, #7c3aed, #ec4899);
+}
+
+/* Теги навыков */
+.wap-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: var(--wap-accent-soft);
+  color: var(--wap-accent);
+}
+
+/* Поля формы под палец (Touch Inputs) */
+.wap-input {
+  min-height: 48px;
+  border-radius: 14px;
+  border-color: var(--wap-border);
+  background-color: var(--wap-bg-shell);
+}
+
+.wap-input:focus {
+  border-color: var(--wap-accent);
+  box-shadow: 0 0 0 0.22rem var(--wap-accent-soft);
+}
+
+/* Аккордеон Bootstrap под WAP Touch */
+.wap-accordion .accordion-item {
+  background: var(--wap-surface-solid);
+  border: 1px solid var(--wap-border);
+  border-radius: var(--wap-radius-md) !important;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.wap-accordion .accordion-button {
+  background: transparent;
+  font-weight: 600;
+  font-size: 0.9rem;
+  min-height: 52px;
+  box-shadow: none;
+}
+
+.wap-accordion .accordion-button:not(.collapsed) {
+  color: var(--wap-accent);
+  background: var(--wap-accent-soft);
+}
+
+/* Нижняя панель навигации под большой палец (Thumb Dock) */
+.wap-bottom-dock {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  z-index: 1035;
+  padding: 8px 12px calc(10px + env(safe-area-inset-bottom, 0px));
+  background: var(--wap-surface);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-top: 1px solid var(--wap-border);
+  margin-top: auto;
+}
+
+.wap-nav-pills {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.wap-dock-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-height: 52px;
+  padding: 6px 4px;
+  border-radius: 14px !important;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--wap-text-muted) !important;
+  background: transparent !important;
+  border: none;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.12s ease;
+}
+
+.wap-dock-btn i {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.wap-dock-btn:active {
+  transform: scale(0.94);
+}
+
+.wap-dock-btn.active {
+  background: var(--wap-accent-soft) !important;
+  color: var(--wap-accent) !important;
+}
+
+/* Плавное появление вкладок */
+.tab-pane.show {
+  animation: wapFadeUp 0.22s ease;
+}
+
+@keyframes wapFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Компактный футер */
+.wap-footer {
+  font-size: 0.76rem;
+  color: var(--wap-text-muted);
+  padding: 8px 4px 16px;
+}
+
+/* Утилиты */
+.text-wap-muted {
+  color: var(--wap-text-muted);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
